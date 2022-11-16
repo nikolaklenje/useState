@@ -1,34 +1,33 @@
 import React, { useState} from "react";
-import lion from "./lion.jpeg"
-import dog from "./dog.jpeg"
-import wolf from "./wolf.jpeg"
-import bear from "./bear.jpeg"
+import frontend from "./img/frontend.png"
+import uxui from "./img/UxUi.png"
+import backend from "./img/backend.jpg"
+import database from "./img/database.jpg"
+
 
 
 export default function Main(){
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
-  
+ 
   const handleImageLion = event =>{
     event.preventDefault();
-    setIsImage(<img src={lion} alt="Logo" />)
+    setIsImage(<a href="https://google.com" target="https://google.com" rel="noreferrer"><img className="imgResponse" src={frontend} alt="Logo" /></a>)
    }
- 
+
+  
    const handleImageWolf = event =>{
     event.preventDefault();
-    setIsImage(<img src={wolf} alt="Logo" />)
+    setIsImage(<a href="https://google.com" target="" rel="noreferrer"><img className="imgResponse" src={backend} alt="Logo" /></a>)
    }
  
    const handleImageDog = event =>{
     event.preventDefault();
-    setIsImage(<img src={dog} alt="Logo" />)
+    setIsImage(<a href="https://google.com" target="" rel="noreferrer"><img className="imgResponse" src={uxui} alt="Logo" /></a>)
    }
  
    const handleImageBear = event =>{
     event.preventDefault();
-    setIsImage(<img src={bear} alt="Logo" />)
+    setIsImage(<a href="https://google.com" target="" rel="noreferrer"><img className="imgResponse" src={database} alt="Logo" /></a>)
    }
  
 
@@ -49,9 +48,10 @@ export default function Main(){
 
 
     return(
-      <div>
-        <button onClick={refreshPage} className="homebtn">Home</button>
+      <div className="main">
+        
         <div style={{display: isShown ? 'block' : 'none'}}>
+        
           <form className="container" >
               <p className="text">  Name</p>
                  <input type="text" className="inputName" value={firstName}
@@ -61,14 +61,14 @@ export default function Main(){
                  onChange={(e) => setLastName(e.target.value)}></input>
                  
              <div className="dropdown">
-                <button onClick= {myFunction} className="dropbtn">Animals</button>
+                <button onClick= {myFunction} className="dropbtn">Choose Path</button>
                    <div id="myDropdown" className="dropdown-content">
     
                      <ul onClick={handleSubmit} >
-                         <li onClick={handleImageLion} >Lav</li>
-                         <li onClick={handleImageWolf}>Vuk</li>
-                         <li onClick={handleImageDog}>Pas</li>
-                         <li onClick={handleImageBear}>Medjed</li>
+                         <li value={frontend} onClick={handleImageLion} >Front-end</li>
+                         <li value={backend} onClick={handleImageWolf}>Back-end</li>
+                         <li value={uxui}  onClick={handleImageDog}>UX-UI</li>
+                         <li value={database} onClick={handleImageBear}>Database</li>
                     </ul>
       
                   </div>
@@ -77,11 +77,12 @@ export default function Main(){
                  
         </form>
         </div>
-        <div className="container">
+            <div className="containerResponse">
             {message}
             {isImage}
+            </div> 
             
-            </div>
+            
             
         </div>
     )
@@ -118,3 +119,9 @@ function myFunction() {
 // //                   <option value="Macka">Macka</option>
 // //                 </select>
 // //                 <Link to="/Response"> <input type="submit" value="Submit"></input></Link> */}
+
+
+// const handleImage= event =>{
+//   event.preventDefault();
+//   setIsImage(<img src={event.target.value} alt="Logo" />)
+//  }
